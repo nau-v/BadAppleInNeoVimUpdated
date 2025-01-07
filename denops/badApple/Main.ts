@@ -26,7 +26,7 @@ export async function main(denops: Denops): Promise<void> {
       const o = Date.now();
       let l = 0;
       const c = async (t) => {
-        let s = null;
+        let s = Date.now();
         let a = t.split(/\d$/gm);
         let p = ++l * (1 / 30) * 1000;
         let d = Date.now() - o;
