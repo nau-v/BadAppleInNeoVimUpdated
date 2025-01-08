@@ -3,9 +3,8 @@ import { Denops } from "https://deno.land/x/denops_std@v6.0.1/mod.ts";
 
 const log = async (denops: Denops, content: string[]) => {
   try {
-    const newContent = content.filter((x, i) => typeof x === "string" && i > 0)
-      .map((x) => x.slice(0, -1));
-    await denops.call("setline", 1, newContent);
+    // Set the lines directly in the NeoVim buffer
+    await denops.call("setline", 1, content);
   } catch (e) {
     console.error(e);
   }
@@ -28,8 +27,8 @@ export async function main(denops: Denops): Promise<void> {
           const targetTime = ++frameIndex * (1000 / 30); // 30 FPS
           const delay = targetTime - elapsedTime;
 
-          const frameLines = frame.split(/\d$/gm); // Split into lines
-          await log(denops, frameLines);
+          const frameLines = frame.split("\n"); // Split frame into lines
+          await log(denops, frameLines); // Write frame to NeoVim buffer
 
           if (frames.length > 0) {
             setTimeout(async () => {
