@@ -20,11 +20,7 @@ export async function main(denops: Denops): Promise<void> {
       const parent_dir = path.dirname(path.fromFileUrl(import.meta.url));
       const file = await Deno.open(parent_dir + "/frames.txt", { read: true });
       const decoder = new TextDecoder();
-<<<<<<< HEAD
       const rawContent = Deno.readAll(file);
-=======
-      const rawContent = Deno.readFileSync(file);
->>>>>>> c4c116def6be52482985c5f56cc84a57c9e23573
       const t = decoder.decode(rawContent);
       const e = t.split(/^\n$/gm);
       const o = Date.now();
