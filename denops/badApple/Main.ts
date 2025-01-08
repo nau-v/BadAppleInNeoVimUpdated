@@ -24,7 +24,7 @@ export async function main(denops: Denops): Promise<void> {
 
         const playFrame = async (frame: string) => {
           const elapsedTime = Date.now() - startTime;
-          const targetTime = ++frameIndex * (1000 / 60); // 30 FPS
+          const targetTime = ++frameIndex * (1000 / 30); // 30 FPS
           const delay = targetTime - elapsedTime;
 
           const frameLines = frame.split("\n"); // Split frame into lines
